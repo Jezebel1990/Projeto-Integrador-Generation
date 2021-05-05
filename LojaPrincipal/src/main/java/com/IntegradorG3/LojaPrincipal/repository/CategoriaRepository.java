@@ -9,6 +9,6 @@ import com.IntegradorG3.LojaPrincipal.model.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 	
-	public List<Categoria> findAllByTemaContainingIgnoreCase(Categoria tema);
+	public List<Categoria> findAllByTemaContainingIgnoreCase(String tema);
 
 }
