@@ -41,19 +41,19 @@ public class Usuario {
 
 	private String telefoneCelular;
 	
-	@OneToMany(mappedBy = "nomeCompleto", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties
-	private List<Produto> produtos;
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<Produto> produto;
 
 
 	
 	public List<Produto> getProdutos() {
-		return produtos;
+		return produto;
 	}
 
 
 	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+		this.produto = produtos;
 	}
 
 

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.drogariamunicipal.farmacia.model.Produto;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -35,18 +35,11 @@ public class Categoria {
 	@Size(min = 5, max = 100)
 	private String tema;
 	
-	@OneToMany(mappedBy = "tipo", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties
-	private List<Produto> camiseta;
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Produto> produto;
 	
 	
-	
-	public List<Produto> getCamiseta() {
-		return camiseta;
-	}
-	public void setCamiseta(List<Produto> camiseta) {
-		this.camiseta = camiseta;
-	}
 	public long getId() {
 		return id;
 	}
@@ -70,6 +63,12 @@ public class Categoria {
 	}
 	public void setTema(String tema) {
 		this.tema = tema;
+	}
+	public List<Produto> getProduto() {
+		return produto;
+	}
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 	
 	
