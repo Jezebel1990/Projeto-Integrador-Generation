@@ -51,9 +51,11 @@ public class CategoriaController {
 		repository.deleteById(id);
 	}
 	
+
 	@GetMapping("/tema/{tema}")
-	public ResponseEntity<List<Categoria>> getByTema(@PathVariable String tema){
-	 return ResponseEntity.ok(repository.findAllByTemaContainingIgnoreCase(tema));
+	public ResponseEntity <List<Categoria>> getByTema(@PathVariable String tema){
+		return ResponseEntity.ok(repository.findAllByTemaContainingIgnoreCase(tema));
 	}
+
 }
 	

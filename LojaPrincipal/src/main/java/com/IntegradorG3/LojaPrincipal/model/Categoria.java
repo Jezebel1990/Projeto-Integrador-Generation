@@ -1,15 +1,22 @@
 package com.IntegradorG3.LojaPrincipal.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.drogariamunicipal.farmacia.model.Produto;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-@Table
+@Table (name= "tb_categoria")
 public class Categoria {
 	
 	@Id
@@ -28,6 +35,18 @@ public class Categoria {
 	@Size(min = 5, max = 100)
 	private String tema;
 	
+	@OneToMany(mappedBy = "tipo", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties
+	private List<Produto> camiseta;
+	
+	
+	
+	public List<Produto> getCamiseta() {
+		return camiseta;
+	}
+	public void setCamiseta(List<Produto> camiseta) {
+		this.camiseta = camiseta;
+	}
 	public long getId() {
 		return id;
 	}
