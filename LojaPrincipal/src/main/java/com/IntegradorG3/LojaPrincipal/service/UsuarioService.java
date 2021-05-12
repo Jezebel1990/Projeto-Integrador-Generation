@@ -18,7 +18,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
-	public Optional <Usuario> cadastrarUsuario(Usuario novoUsuario) {
+	public Optional<Usuario> cadastrarUsuario(Usuario novoUsuario) {
 		Optional <Usuario> usuarioExistente = repository.findByEmail(novoUsuario.getEmail());
 		if (usuarioExistente.isEmpty()) { // cadastra novo usuario, se e somente se, ele nao existir.			
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
