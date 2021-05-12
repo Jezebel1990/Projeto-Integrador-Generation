@@ -1,12 +1,11 @@
 package com.IntegradorG3.LojaPrincipal.controller;
 
 import java.util.List;
-
-import org.apache.catalina.connector.Response;
+import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.StreamingHttpOutputMessage.Body;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +15,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.IntegradorG3.LojaPrincipal.model.Categoria;
+import com.IntegradorG3.LojaPrincipal.model.UserLogin;
 import com.IntegradorG3.LojaPrincipal.model.Usuario;
 import com.IntegradorG3.LojaPrincipal.repository.UsuarioRepository;
+import com.IntegradorG3.LojaPrincipal.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
@@ -28,7 +27,18 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository repository;
+	private UsuarioService usuarioService;
 	
+	@PostMapping("/logar")
+	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user){
+		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> Cadastrar(@Valid @RequestBody Usuario email){ //@Valid --> verifica se tudo solicitado foi entregue e trata a excecao
+		return usuarioService.cadastrarUsuario(email).map(resp-> ResponseEntity.ok(resp)).orElse(ResponseEntity.status(400).build());
+	}
+
 	@GetMapping
 	public List<Usuario> getAll(){
 		return repository.findAll();
