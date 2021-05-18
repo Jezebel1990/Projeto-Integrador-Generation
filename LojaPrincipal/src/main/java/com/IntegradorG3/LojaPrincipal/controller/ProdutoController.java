@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.IntegradorG3.LojaPrincipal.model.Categoria;
 import com.IntegradorG3.LojaPrincipal.model.Produto;
 import com.IntegradorG3.LojaPrincipal.repository.ProdutoRepository;
 
