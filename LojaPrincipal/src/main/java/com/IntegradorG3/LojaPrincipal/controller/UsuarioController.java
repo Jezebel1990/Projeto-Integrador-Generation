@@ -22,7 +22,8 @@ import com.IntegradorG3.LojaPrincipal.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin ("*")
+@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin ("*")
 public class UsuarioController {
 
 	@Autowired
