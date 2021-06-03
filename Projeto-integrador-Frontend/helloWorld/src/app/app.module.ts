@@ -18,7 +18,8 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
