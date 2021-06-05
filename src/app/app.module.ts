@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { MenuComponent } from './menu/menu.component';
+import { RodapeComponent } from './rodape/rodape.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { InicioComponent } from './inicio/inicio.component';
     AppComponent,
     EntrarComponent,
     CadastrarComponent,
-    InicioComponent
+    MenuComponent,
+    RodapeComponent
   ],
   imports: [
     BrowserModule,
